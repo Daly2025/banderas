@@ -1,9 +1,14 @@
-#cargando{
-width: 60px;
-position: absolute;
-top: 50%;
-left: 50%;
+#cargando {
+    width: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el cargando */
+}
 
-
-
+.bandera {
+    width: 80px;  /* Establece un ancho fijo */
+    height: 50px; /* Establece un alto fijo */
+    margin: 5px;  /* Da espacio entre las imágenes */
+    object-fit: cover; /* Asegura que las imágenes mantengan su proporción */
 }
