@@ -1,9 +1,9 @@
+
 function cargarBanderas(){
     fetch("https://restcountries.com/v3.1/all")
-    .then(response => {
+    .then(response =>{
         $("#cargando").hide();
-        return response.json();
-    })
+        return response.json()})
     .then(data => {
         let banderas = document.getElementById("banderas");
         for (let i = 0; i < data.length; i++) {
@@ -11,17 +11,18 @@ function cargarBanderas(){
             img.src = data[i].flags.png;
             img.className = "bandera";
             img.alt = data[i].name.common;
+            img.addEventListener("mouseover", onMouseOver);
             banderas.appendChild(img);
         }
-
-        // Asignamos el evento de clic a las banderas una vez que están agregadas al DOM
-        $(".bandera").click(function(){
-            alert($(this).attr("alt"));
-        });
+        $(".bandera").click(function(){ 
+            alert("El país seleccionado es: " + $(this).attr("alt"));
+        })
     })
-    .catch(error => console.error(error));
-}
+    .catch(error => console.error(error))
+};
 
-// Llamamos a la función para cargar las banderas después de 2 segundos
-setTimeout(cargarBanderas, 2000);
+setTimeout(cargarBanderas, 1000);
+function onMouseOver(params) {
+    console.log("Mouse sobre la bandera de: " + params.target.alt);
+}
 
